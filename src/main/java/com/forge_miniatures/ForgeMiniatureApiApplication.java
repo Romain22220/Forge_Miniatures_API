@@ -1,4 +1,4 @@
-package com.forge_miniature;
+package com.forge_miniatures;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

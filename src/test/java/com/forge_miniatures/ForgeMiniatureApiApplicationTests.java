@@ -1,4 +1,4 @@
-package com.forge_miniature;
+package com.forge_miniatures;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
