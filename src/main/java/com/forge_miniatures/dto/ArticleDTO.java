@@ -1,6 +1,6 @@
 package com.forge_miniatures.dto;
 
-import com.forge_miniatures.entity.Article_Image;
+import com.forge_miniatures.entity.ArticleImage;
 import com.forge_miniatures.entity.Reference;
 import com.forge_miniatures.entity.Scale;
 import com.forge_miniatures.entity.Type;
@@ -17,7 +17,7 @@ public class ArticleDTO {
     private Long id;
     private String nom;
     private String description;
-    private List<Article_Image> images;
+    private List<ArticleImage> images;
     private double prix;
     private int quantite;
     private Type type;
