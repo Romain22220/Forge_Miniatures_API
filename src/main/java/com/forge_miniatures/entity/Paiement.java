@@ -3,9 +3,9 @@ package com.forge_miniatures.entity;
 import java.util.Date;
 
 public class Paiement {
-    int id;
-    String creditCardNumber;
-    Date expirationDate;
-    String cryptogram;
-    User user;
+    private Long id;
+    private String creditCardNumber;
+    private Date expirationDate;
+    private String cryptogram;
+    private User user;
 }

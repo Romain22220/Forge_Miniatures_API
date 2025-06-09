@@ -1,6 +1,6 @@
 package com.forge_miniatures.entity;
 
 public class Shop {
-    int id;
-    User user;
+    private Long id;
+    private User user;
 }

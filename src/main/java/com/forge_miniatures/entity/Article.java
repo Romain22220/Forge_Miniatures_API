@@ -1,13 +1,13 @@
 package com.forge_miniatures.entity;
 
 public class Article {
-    int id;
-    String nom;
-    String description;
-    double prix;
-    int quantite;
-    Type type;
-    Scale scale;
-    Reference reference;
+    private Long id;
+    private String nom;
+    private String description;
+    private double prix;
+    private int quantite;
+    private Type type;
+    private Scale scale;
+    private Reference reference;
 
 }

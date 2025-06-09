@@ -1,11 +1,11 @@
 package com.forge_miniatures.entity;
 
 public class User {
-    int id;
-    String nom;
-    String prenom;
-    String email;
-    String telephone;
-    String adresse;
-    String password;
+    private Long id;
+    private String nom;
+    private String prenom;
+    private String email;
+    private String telephone;
+    private String adresse;
+    private String password;
 }

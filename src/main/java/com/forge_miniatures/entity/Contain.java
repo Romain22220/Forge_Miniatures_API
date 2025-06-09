@@ -1,8 +1,8 @@
 package com.forge_miniatures.entity;
 
 public class Contain {
-    Shop shop;
-    User user;
-    Article article;
-    int quantite;
+    private Shop shop;
+    private User user;
+    private Article article;
+    private int quantite;
 }
