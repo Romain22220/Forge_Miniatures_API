@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "t1m_type_tpe")
 @Data
@@ -18,6 +20,9 @@ public class Type {
 
     @Column(name="nom")
     private String nom;
+
+    @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Subtype> subtypes;
 
 
 }
