@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Reference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idt_reference_rfc")
+    @Column(name="idt_reference")
     private Long id;
 
     @Column(name="nom_reference")

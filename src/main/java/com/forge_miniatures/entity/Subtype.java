@@ -14,7 +14,7 @@ public class Subtype {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="idt_subtype_sbp")
+    @Column(name="idt_subtype")
     private Long id;
 
     @Column(name="nom_subtype")

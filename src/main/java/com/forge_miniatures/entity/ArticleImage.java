@@ -14,7 +14,7 @@ public class ArticleImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idt_articles_images_ais")
+    @Column(name = "idt_articles_images")
     private Integer id;
 
     @Column(name = "image_url")
@@ -23,7 +23,6 @@ public class ArticleImage {
     @ManyToOne
     @JoinColumns({
             @JoinColumn(name = "t1m_idt_article", referencedColumnName = "idt_article"),
-            @JoinColumn(name = "t1m_idt_scale", referencedColumnName = "t1m_idt_scale"),
             @JoinColumn(name = "t1m_idt_reference", referencedColumnName = "t1m_idt_reference")
     })
     private Article article;

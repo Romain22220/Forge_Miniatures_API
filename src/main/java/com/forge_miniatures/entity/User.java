@@ -24,8 +24,8 @@ public class User {
     @Column(name="mail_user")
     private String email;
 
-    //@Column(name="telephone_user")
-    //private String telephone;
+    @Column(name="telephone_user")
+    private String telephone;
 
     @Column(name="adresse_user")
     private String adresse;
