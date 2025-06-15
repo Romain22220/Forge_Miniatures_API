@@ -1,11 +1,35 @@
 package com.forge_miniatures.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@Table(name="t1m_users_usr")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="nom_user")
     private String nom;
+
+    @Column(name="prenom_user")
     private String prenom;
+
+    @Column(name="mail_user")
     private String email;
-    private String telephone;
+
+    //@Column(name="telephone_user")
+    //private String telephone;
+
+    @Column(name="adresse_user")
     private String adresse;
+
+    @Column(name = "password_user")
     private String password;
 }
