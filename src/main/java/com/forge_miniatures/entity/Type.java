@@ -24,5 +24,4 @@ public class Type {
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Subtype> subtypes;
 
-
 }
