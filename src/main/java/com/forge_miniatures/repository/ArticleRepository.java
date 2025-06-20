@@ -1,0 +1,11 @@
+package com.forge_miniatures.repository;
+
+import com.forge_miniatures.entity.Article;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface ArticleRepository extends JpaRepository<Article,Integer> {
+    Article findArticleByNom(String nomArticle);
+    List<Article> findArticlesByMarque(String marque);
+}
