@@ -21,6 +21,14 @@ public class UserRepositoryTest {
         User user = new User(null, "Dupont", "Jean", "jean123", "0612345678", "jean@mail.com", "pass123", "12 rue de Paris");
         User result = userRepository.save(user);
         Assertions.assertNotNull(result.getId());
+    }
 
+    @Test
+    public void testFindUserById(){
+        User user = new User(null, "Dupont", "Jean", "jean123", "0612345678", "jean@mail.com", "pass123", "12 rue de Paris");
+        userRepository.save(user);
+        User result = userRepository.findById(user.getId());
+        System.out.println("Le user a pour ID :" + result.getId());
+        Assertions.assertNotNull(result);
     }
 }
