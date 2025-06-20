@@ -21,6 +21,9 @@ public class User {
     @Column(name="prenom_user")
     private String prenom;
 
+    @Column(name="pseudo_user")
+    private String pseudo;
+
     @Column(name="mail_user")
     private String email;
 

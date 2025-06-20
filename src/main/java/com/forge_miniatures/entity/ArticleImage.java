@@ -21,10 +21,7 @@ public class ArticleImage {
     private String imageUrl;
 
     @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "idt_article"),
-            @JoinColumn(name = "idt_reference")
-    })
+    @JoinColumn(name = "idt_article")
     private Article article;
 }
 

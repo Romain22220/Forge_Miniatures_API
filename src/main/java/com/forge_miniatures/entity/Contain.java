@@ -15,13 +15,14 @@ public class Contain {
     @EmbeddedId
     private ContainId id;
 
+    @MapsId("idtPanier") // relie à la clé composite
     @ManyToOne
-    @JoinColumn(name="idt_panier")
+    @JoinColumn(name = "idt_panier")
     private Shop shop;
 
-
+    @MapsId("idtArticle")
     @ManyToOne
-    @JoinColumn(name="idt_article")
+    @JoinColumn(name = "idt_article")
     private Article article;
 
     @Column(name="quantite")
