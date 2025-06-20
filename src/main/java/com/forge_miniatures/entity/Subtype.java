@@ -21,6 +21,6 @@ public class Subtype {
     private String nom;
 
     @ManyToOne
-    @JoinColumn(name = "t1m_idt_type", referencedColumnName = "idt_type")
+    @JoinColumn(name = "idt_type")
     private Type type;
 }

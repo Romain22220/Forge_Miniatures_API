@@ -22,8 +22,8 @@ public class ArticleImage {
 
     @ManyToOne
     @JoinColumns({
-            @JoinColumn(name = "t1m_idt_article", referencedColumnName = "idt_article"),
-            @JoinColumn(name = "t1m_idt_reference", referencedColumnName = "t1m_idt_reference")
+            @JoinColumn(name = "idt_article"),
+            @JoinColumn(name = "idt_reference")
     })
     private Article article;
 }

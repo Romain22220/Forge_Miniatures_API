@@ -45,7 +45,7 @@ public class Article {
     private Date datePublication;
 
     @ManyToOne
-    @JoinColumn(name = "t1m_idt_type")
+    @JoinColumn(name = "idt_type")
     private Type type;
 
     @ManyToOne
@@ -57,7 +57,7 @@ public class Article {
     private Scale scale;
 
     @OneToOne
-    @JoinColumn(name = "t1m_idt_reference")
+    @JoinColumn(name = "idt_reference")
     private Reference reference;
 
 
