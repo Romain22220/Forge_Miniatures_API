@@ -12,12 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Contain {
 
-    @Id
+    @EmbeddedId
+    private ContainId id;
+
     @ManyToOne
     @JoinColumn(name="idt_panier")
     private Shop shop;
 
-    @Id
+
     @ManyToOne
     @JoinColumn(name="idt_article")
     private Article article;
