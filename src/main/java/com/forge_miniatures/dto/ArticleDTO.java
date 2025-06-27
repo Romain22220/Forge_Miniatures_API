@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -15,12 +16,15 @@ import java.util.List;
 @NoArgsConstructor
 public class ArticleDTO {
     private Long id;
-    private String nom;
+    private String name;
     private String description;
     private List<ArticleImage> images;
-    private double prix;
+    private double price;
     private int quantite;
-    private Type type;
-    private Scale scale;
-    private Reference reference;
+    private Date dateCreation;
+    private Date datePublication;
+    private String type;
+    private String statut;
+    private String scale;
+    private String reference;
 }

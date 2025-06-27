@@ -15,7 +15,7 @@ public class Contain {
     @EmbeddedId
     private ContainId id;
 
-    @MapsId("idtPanier") // relie à la clé composite
+    @MapsId("idtPanier")
     @ManyToOne
     @JoinColumn(name = "idt_panier")
     private Shop shop;
@@ -26,5 +26,5 @@ public class Contain {
     private Article article;
 
     @Column(name="quantite")
-    private int quantite;
+    private int quantity;
 }
