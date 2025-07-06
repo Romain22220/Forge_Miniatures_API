@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ArticleImageDTO {
     private Long id;
     private String imageURL;
-    private String article;
+    private Long articleId;
+    private String articleName;
 }
