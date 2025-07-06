@@ -13,8 +13,8 @@ import java.util.Objects;
 @AllArgsConstructor
 public class ContainId {
 
-    private Integer idtPanier;
-    private Integer idtArticle;
+    private Long idtPanier;
+    private Long idtArticle;
 
     @Override
     public boolean equals(Object o) {
