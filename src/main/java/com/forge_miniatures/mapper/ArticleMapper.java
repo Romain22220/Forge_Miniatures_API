@@ -79,6 +79,17 @@ public class ArticleMapper {
             article.setReference(reference);
         }
 
+        if(articleDTO.getImages() != null && !articleDTO.getImages().isEmpty()) {
+            List<ArticleImage> imageList = articleDTO.getImages()
+                    .stream()
+                    .map(url -> {
+                        ArticleImage articleImage = new ArticleImage();
+                        articleImage.setImageUrl(url);
+                        return articleImage;
+                    }).collect(Collectors.toList());
+            article.setImages(imageList);
+        }
+
         return article;
     }
 
