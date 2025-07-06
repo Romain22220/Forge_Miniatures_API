@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class ArticleMapper {
 
     /*
-        Fonction permettant de mettre l'entité Article -> ArticleDTO
+        Fonction permettant de mettre l'entité Article vers ArticleDTO
      */
     public static ArticleDTO toArticleDTO(Article article) {
 
@@ -41,7 +41,7 @@ public class ArticleMapper {
     }
 
     /*
-        Fonction permettant de passer du DTO -> Entité
+        Fonction permettant de passer du DTO vers Entité
      */
     public static Article toArticleEntity(ArticleDTO articleDTO) {
         if(articleDTO == null) return null;
