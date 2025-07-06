@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class SubTypeDTO {
     private Long id;
     private String name;
-    private String type;
+    private String TypeName;
+    private Long typeId;
 }

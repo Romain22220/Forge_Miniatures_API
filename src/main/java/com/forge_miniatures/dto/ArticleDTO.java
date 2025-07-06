@@ -21,8 +21,12 @@ public class ArticleDTO {
     private int quantite;
     private Date dateCreation;
     private Date datePublication;
-    private String type;
-    private String statut;
-    private String scale;
-    private String reference;
+    private Long typeId;
+    private String typeName;
+    private Long statusId;
+    private String statutName;
+    private Long scaleId;
+    private String scaleName;
+    private Long referenceId;
+    private String referenceName;
 }

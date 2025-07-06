@@ -12,5 +12,5 @@ import java.util.List;
 public class TypeDTO {
     private Long id;
     private String name;
-    private List<String> subtype;
+    private List<String> subtypes;
 }

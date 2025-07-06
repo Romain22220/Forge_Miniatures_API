@@ -1,14 +1,21 @@
 package com.forge_miniatures.mapper;
 
 import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.entity.Article;
-import com.forge_miniatures.entity.ArticleImage;
+import com.forge_miniatures.dto.TypeDTO;
+import com.forge_miniatures.entity.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ArticleMapper {
+
+    /*
+        Fonction permettant de mettre l'entité Article -> ArticleDTO
+     */
     public static ArticleDTO toArticleDTO(Article article) {
+
+        if (article == null) return null;
+
         return new ArticleDTO(
                 article.getId(),
                 article.getNom(),
@@ -21,10 +28,65 @@ public class ArticleMapper {
                 article.getQuantite(),
                 article.getDateCreation(),
                 article.getDatePublication(),
+                article.getType() != null ? article.getType().getId() : null,
                 article.getType() != null ? article.getType().getNom() : null,
+                article.getStatuts() != null ? article.getStatuts().getId() : null,
                 article.getStatuts() != null ? article.getStatuts().getStatut() : null,
+                article.getScale() != null ? article.getScale().getId() : null,
                 article.getScale() != null ? article.getScale().getScale() : null,
+                article.getReference() != null ? article.getReference().getId() : null,
                 article.getReference() != null ? article.getReference().getNom() : null
         );
     }
+
+    /*
+        Fonction permettant de passer du DTO -> Entité
+     */
+    public static Article toArticleEntity(ArticleDTO articleDTO) {
+        if(articleDTO == null) return null;
+
+        Article article = new Article();
+        article.setId(articleDTO.getId());
+        article.setNom(articleDTO.getName());
+        article.setMarque(articleDTO.getMarque());
+        article.setDescription(articleDTO.getDescription());
+        article.setPrix(articleDTO.getPrice());
+        article.setQuantite(articleDTO.getQuantite());
+        article.setDateCreation(articleDTO.getDateCreation());
+        article.setDatePublication(articleDTO.getDatePublication());
+
+        if(articleDTO.getTypeName() != null) {
+            Type type = new Type();
+            type.setId(articleDTO.getTypeId());
+            article.setType(type);
+        }
+
+        if(articleDTO.getStatutName() != null) {
+            Status status = new Status();
+            status.setId(articleDTO.getStatusId());
+            article.setStatuts(status);
+        }
+
+        if(articleDTO.getScaleName() != null) {
+            Scale scale = new Scale();
+            scale.setId(articleDTO.getScaleId());
+            article.setScale(scale);
+        }
+
+        if(articleDTO.getReferenceName() != null) {
+            Reference reference = new Reference();
+            reference.setId(articleDTO.getReferenceId());
+            article.setReference(reference);
+        }
+
+        return article;
+    }
+
+    /*
+        Fonction permettant de mettre en list d'entités en list de DTO
+     */
+    public static List<ArticleDTO> toArticleDTO(List<Article> articles) {
+        return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
+    }
+
 }
