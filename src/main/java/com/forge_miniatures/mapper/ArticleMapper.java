@@ -1,7 +1,6 @@
 package com.forge_miniatures.mapper;
 
 import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.dto.TypeDTO;
 import com.forge_miniatures.entity.*;
 
 import java.util.List;
@@ -16,27 +15,29 @@ public class ArticleMapper {
 
         if (article == null) return null;
 
-        return new ArticleDTO(
-                article.getId(),
-                article.getNom(),
-                article.getMarque(),
-                article.getDescription(),
-                article.getImages() != null
-                        ? article.getImages().stream().map(ArticleImage::getImageUrl).collect(Collectors.toList())
-                        : List.of(),
-                article.getPrix(),
-                article.getQuantite(),
-                article.getDateCreation(),
-                article.getDatePublication(),
-                article.getType() != null ? article.getType().getId() : null,
-                article.getType() != null ? article.getType().getNom() : null,
-                article.getStatuts() != null ? article.getStatuts().getId() : null,
-                article.getStatuts() != null ? article.getStatuts().getStatut() : null,
-                article.getScale() != null ? article.getScale().getId() : null,
-                article.getScale() != null ? article.getScale().getScale() : null,
-                article.getReference() != null ? article.getReference().getId() : null,
-                article.getReference() != null ? article.getReference().getNom() : null
-        );
+        ArticleDTO articleDTO = new ArticleDTO();
+
+        articleDTO.setId(article.getId());
+        articleDTO.setName(article.getNom());
+        articleDTO.setMarque(article.getMarque());
+        articleDTO.setDescription(article.getDescription());
+        articleDTO.setQuantite(article.getQuantite());
+        articleDTO.setDateCreation(article.getDateCreation());
+        articleDTO.setDatePublication(article.getDatePublication());
+        articleDTO.setTypeId(article.getType() != null ? article.getType().getId() : null);
+        articleDTO.setStatusId(article.getStatuts() != null ? article.getStatuts().getId() : null);
+        articleDTO.setScaleId(article.getScale() != null ? article.getScale().getId() : null);
+        articleDTO.setReferenceId(article.getReference() != null ? article.getReference().getId() : null);
+
+
+        if (article.getImages() != null && !article.getImages().isEmpty()) {
+            List<String> imageUrls = article.getImages().stream()
+                    .map(ArticleImage::getImageUrl)
+                    .collect(Collectors.toList());
+            articleDTO.setImages(imageUrls);
+        }
+
+        return articleDTO;
     }
 
     /*
