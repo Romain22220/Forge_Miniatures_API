@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContainIdDTO {
-    private int idtPanier;
-    private int idtArticle;
+    private Long idtPanier;
+    private Long idtArticle;
 }
