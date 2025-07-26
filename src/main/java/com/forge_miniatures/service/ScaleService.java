@@ -8,7 +8,7 @@ import java.util.List;
 public interface ScaleService {
     ScaleDTO createScale(ScaleDTO scaleDTO);
     ScaleDTO updateScale(ScaleDTO scaleDTO);
-    ScaleDTO findScaleById(Long id);
+    ScaleDTO getScaleById(Long id);
     List<ScaleDTO> getAllScales();
     void deleteScaleById(Long id);
 }

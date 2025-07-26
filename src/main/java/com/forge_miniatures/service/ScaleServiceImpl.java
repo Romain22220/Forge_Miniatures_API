@@ -29,7 +29,7 @@ public class ScaleServiceImpl implements   ScaleService {
     }
 
     @Override
-    public ScaleDTO findScaleById(Long id) {
+    public ScaleDTO getScaleById(Long id) {
         Scale scale = scaleRepository.findScaleById(id);
         if(scale == null){
             throw new EntityNotFoundException("Scale with "+ id + " not found. Please select a real scale. ");
