@@ -3,24 +3,29 @@ package com.forge_miniatures;
 import com.forge_miniatures.entity.User;
 import com.forge_miniatures.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
 
 @DataJpaTest
 @ActiveProfiles("test")
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
 
-    /*
-        Création d'un User Jean avec ses caractéristiques
-     */
-        User Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123");
+    private User Jean;
 
+    @BeforeEach
+    public void setup() {
+        Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123");
+    }
     /*
         Test permettant de voir si un User est bien sauvegardé
      */
