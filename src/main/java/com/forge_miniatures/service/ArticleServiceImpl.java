@@ -56,7 +56,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public ArticleDTO findArticleByName(String articleName) {
-        Article article = articleRepository.findArticleByName(articleName);
+        Article article = articleRepository.findArticleByNom(articleName);
         if (article == null) {
             throw new EntityNotFoundException("Article " + articleName + " not found. Please choose a real article. ");
         }

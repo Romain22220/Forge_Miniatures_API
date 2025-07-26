@@ -25,10 +25,13 @@ public class ArticleMapper {
         articleDTO.setDateCreation(article.getDateCreation());
         articleDTO.setDatePublication(article.getDatePublication());
         articleDTO.setTypeId(article.getType() != null ? article.getType().getId() : null);
+        articleDTO.setTypeName(article.getType() != null ? article.getType().getNom() : null );
         articleDTO.setStatusId(article.getStatuts() != null ? article.getStatuts().getId() : null);
+        articleDTO.setStatutName(article.getStatuts() != null ? article.getStatuts().getStatut() : null);
         articleDTO.setScaleId(article.getScale() != null ? article.getScale().getId() : null);
+        articleDTO.setScaleName(article.getScale()!= null ? article.getScale().getScale(): null);
         articleDTO.setReferenceId(article.getReference() != null ? article.getReference().getId() : null);
-
+        articleDTO.setReferenceName(article.getReference() != null ? article.getReference().getNom() : null);
 
         if (article.getImages() != null && !article.getImages().isEmpty()) {
             List<String> imageUrls = article.getImages().stream()
