@@ -1,14 +1,11 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.ArticleDTO;
 import com.forge_miniatures.dto.ScaleDTO;
-import com.forge_miniatures.repository.ScaleRepository;
 import com.forge_miniatures.service.ScaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.HandlerMapping;
 
 import java.util.List;
 
@@ -16,9 +13,7 @@ import java.util.List;
 @RequestMapping("/api/scales")
 @RequiredArgsConstructor
 public class ScaleController {
-    private final ScaleRepository scaleRepository;
     private final ScaleService scaleService;
-    private final HandlerMapping resourceHandlerMapping;
 
     @GetMapping("/{id}")
     public ResponseEntity<ScaleDTO> getScale(@PathVariable Long id) {
