@@ -19,7 +19,8 @@ public class ScaleServiceImpl implements   ScaleService {
     @Override
     public ScaleDTO createScale(ScaleDTO scaleDTO) {
         Scale scale = ScaleMapper.toScale(scaleDTO);
-
+        if (scale == null)
+            throw new  IllegalArgumentException("There is a problem with the scale that you attempted to create");
         return ScaleMapper.toScaleDTO(scaleRepository.save(scale));
     }
 
