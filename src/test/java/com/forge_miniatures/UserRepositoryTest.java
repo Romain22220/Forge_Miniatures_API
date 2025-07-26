@@ -42,7 +42,7 @@ public class UserRepositoryTest {
     public void testFindUserById(){
         User savedUser = userRepository.save(Jean);
         Long id = savedUser.getId();
-        User result = userRepository.findById(id);
+        User result = userRepository.findUserById(id);
         Assertions.assertNotNull(result);
     }
 
@@ -52,7 +52,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByIdNotExistant(){
         Long id = 5L;
-        User result = userRepository.findById(id);
+        User result = userRepository.findUserById(id);
         Assertions.assertNull(result);
 
     }
@@ -63,7 +63,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByEmail(){
         userRepository.save(Jean);
-        User result = userRepository.findByEmail("jean@mail.com");
+        User result = userRepository.findUserByEmail("jean@mail.com");
         Assertions.assertNotNull(result);
     }
 
@@ -72,7 +72,7 @@ public class UserRepositoryTest {
      */
     @Test
     public void testFindUserByEmailNotExistant(){
-        User result = userRepository.findByEmail("coco@coco.fr");
+        User result = userRepository.findUserByEmail("coco@coco.fr");
         Assertions.assertNull(result);
     }
 
@@ -83,7 +83,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByPseudoExistant(){
         userRepository.save(Jean);
-        User result = userRepository.findByPseudo("jean123");
+        User result = userRepository.findUserByPseudo("jean123");
         Assertions.assertNotNull(result);
     }
 
@@ -94,7 +94,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByPseudoNotExistant(){
         userRepository.save(Jean);
-        User result = userRepository.findByPseudo("jean124");
+        User result = userRepository.findUserByPseudo("jean124");
         Assertions.assertNull(result);
     }
 }
