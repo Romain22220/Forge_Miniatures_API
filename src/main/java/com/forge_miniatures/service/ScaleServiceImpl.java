@@ -44,6 +44,10 @@ public class ScaleServiceImpl implements   ScaleService {
 
     @Override
     public void deleteScaleById(Long id) {
+        if (!scaleRepository.existsById(id)) {
+            throw new EntityNotFoundException("Scale with id " + id + " not found. Please select a real ID to delete a scale. ");
+        }
         scaleRepository.deleteScaleById(id);
+
     }
 }

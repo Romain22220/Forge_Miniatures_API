@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.HandlerMapping;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class ScaleController {
     private final ScaleRepository scaleRepository;
     private final ScaleService scaleService;
+    private final HandlerMapping resourceHandlerMapping;
 
     @GetMapping("/{id}")
     public ResponseEntity<ScaleDTO> getScale(@PathVariable Long id) {
@@ -31,5 +33,11 @@ public class ScaleController {
     @GetMapping("/all")
     public ResponseEntity<List<ScaleDTO>> getAllScale() {
         return ResponseEntity.ok(scaleService.getAllScales());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteScale(@PathVariable Long id) {
+        scaleService.deleteScaleById(id);
+        return ResponseEntity.noContent().build();
     }
 }
