@@ -7,13 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/articles")
 @RequiredArgsConstructor
 public class ArticleController {
     private final ArticleService articleService;
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<ArticleDTO> createArticle(@RequestBody ArticleDTO articleDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(articleService.createArticle(articleDTO));
     }
@@ -21,5 +23,10 @@ public class ArticleController {
     @GetMapping("/{id}")
     public ResponseEntity<ArticleDTO> getArticle(@PathVariable Long id) {
         return ResponseEntity.ok(articleService.getArticleById(id));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<ArticleDTO>> getAllArticles() {
+        return ResponseEntity.ok(articleService.getAllArticles());
     }
 }
