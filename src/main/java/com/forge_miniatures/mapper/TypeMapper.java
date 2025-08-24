@@ -27,7 +27,7 @@ public class TypeMapper {
                 : null;
         return new TypeDTO(
                 type.getId(),
-                type.getNom(),
+                type.getName(),
                 subTypeNames
         );
     }
@@ -40,7 +40,7 @@ public class TypeMapper {
 
         Type type = new Type();
         type.setId(typeDTO.getId());
-        type.setNom(typeDTO.getName());
+        type.setName(typeDTO.getName());
         type.setSubtypes(null);
         return type;
     }

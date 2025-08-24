@@ -19,7 +19,7 @@ public class Type {
     private Long id;
 
     @Column(name="nom")
-    private String nom;
+    private String name;
 
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Subtype> subtypes;

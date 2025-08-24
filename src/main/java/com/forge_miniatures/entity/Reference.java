@@ -17,5 +17,5 @@ public class Reference {
     private Long id;
 
     @Column(name="nom_reference")
-    private String nom;
+    private String name;
 }

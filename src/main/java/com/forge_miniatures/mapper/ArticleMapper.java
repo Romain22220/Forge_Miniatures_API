@@ -25,13 +25,13 @@ public class ArticleMapper {
         articleDTO.setDateCreation(article.getDateCreation());
         articleDTO.setDatePublication(article.getDatePublication());
         articleDTO.setTypeId(article.getType() != null ? article.getType().getId() : null);
-        articleDTO.setTypeName(article.getType() != null ? article.getType().getNom() : null );
+        articleDTO.setTypeName(article.getType() != null ? article.getType().getName() : null );
         articleDTO.setStatusId(article.getStatuts() != null ? article.getStatuts().getId() : null);
         articleDTO.setStatutName(article.getStatuts() != null ? article.getStatuts().getStatut() : null);
         articleDTO.setScaleId(article.getScale() != null ? article.getScale().getId() : null);
         articleDTO.setScaleName(article.getScale()!= null ? article.getScale().getScale(): null);
         articleDTO.setReferenceId(article.getReference() != null ? article.getReference().getId() : null);
-        articleDTO.setReferenceName(article.getReference() != null ? article.getReference().getNom() : null);
+        articleDTO.setReferenceName(article.getReference() != null ? article.getReference().getName() : null);
 
         if (article.getImages() != null && !article.getImages().isEmpty()) {
             List<String> imageUrls = article.getImages().stream()
@@ -54,7 +54,7 @@ public class ArticleMapper {
         article.setNom(articleDTO.getName());
         article.setMarque(articleDTO.getMarque());
         article.setDescription(articleDTO.getDescription());
-        article.setPrix(articleDTO.getPrice());
+        article.setPrice(articleDTO.getPrice());
         article.setQuantite(articleDTO.getQuantite());
         article.setDateCreation(articleDTO.getDateCreation());
         article.setDatePublication(articleDTO.getDatePublication());

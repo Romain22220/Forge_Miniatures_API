@@ -1,7 +1,7 @@
 package com.forge_miniatures.service;
 
 import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.entity.Article;
+import com.forge_miniatures.entity.*;
 import com.forge_miniatures.mapper.ArticleMapper;
 import com.forge_miniatures.repository.*;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,23 +27,62 @@ public class ArticleServiceImpl implements ArticleService{
     public ArticleDTO createArticle(ArticleDTO articleDTO) {
         Article article = ArticleMapper.toArticleEntity(articleDTO);
 
-        // Résolution manuelle des objets si pas gérés dans le mapper
-        article.setType(typeRepository.findTypeById(articleDTO.getTypeId()));
-        if(article.getType()==null){
-            throw new EntityNotFoundException("Type not found");
-        }
-        article.setStatuts(statusRepository.findStatusById(articleDTO.getStatusId()));
-        if(article.getStatuts()==null){
-            throw new EntityNotFoundException("Status not found");
-        }
-        article.setScale(scaleRepository.findScaleById(articleDTO.getScaleId()));
-        if(article.getScale()==null){
-            throw new EntityNotFoundException("Scale not found");
-        }
-        article.setReference(referenceRepository.findReferenceById(articleDTO.getReferenceId()));
-        if(article.getReference()==null){
-            throw new EntityNotFoundException("Reference not found");
-        }
+        /*
+            On regarde si le type est déjà créé ou non
+            - Si oui, on le met directement
+            - Si non, on le crée.
+         */
+        Type type = typeRepository.findTypeByName(articleDTO.getTypeName())
+                .orElseGet(() ->{
+                Type newType = new Type();
+                newType.setName(articleDTO.getTypeName());
+                newType.setSubtypes(null);
+                return typeRepository.save(newType);
+                });
+
+        article.setType(type);
+
+        /*
+            On regarde si le status est déjà créé ou non
+            - Si oui, on le met directement
+            - Si non, on le crée.
+         */
+        Status status = statusRepository.findStatusByStatut(articleDTO.getStatutName())
+                .orElseGet(() ->{
+                    Status newStatus = new Status();
+                    newStatus.setStatut(articleDTO.getStatutName());
+                    return statusRepository.save(newStatus);
+        });
+
+        article.setStatuts(status);
+
+        /*
+            On regarde si la scale est déjà créé ou non
+            - Si oui, on la met directement
+            - Si non, on la créer.
+         */
+        Scale scale = scaleRepository.findScaleByScale(articleDTO.getScaleName())
+                .orElseGet(()->{
+                    Scale newScale = new Scale();
+                    newScale.setScale(articleDTO.getScaleName());
+                    return scaleRepository.save(newScale);
+                });
+
+        article.setScale(scale);
+
+        /*
+            On regarde si la référence est déjà créé ou non
+            - Si oui, on la met directement
+            - Si non, on la créer.
+         */
+        Reference reference = referenceRepository.findReferenceByName(articleDTO.getReferenceName())
+                .orElseGet(()-> {
+                    Reference newReference = new Reference();
+                    newReference.setName(articleDTO.getReferenceName());
+                    return referenceRepository.save(newReference);
+                });
+
+        article.setReference(reference);
         article.setDateCreation(new Date());
 
         return ArticleMapper.toArticleDTO(articleRepository.save(article));

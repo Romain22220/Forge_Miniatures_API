@@ -1,7 +1,6 @@
 package com.forge_miniatures.mapper;
 
 import com.forge_miniatures.dto.ReferenceDTO;
-import com.forge_miniatures.entity.ArticleImage;
 import com.forge_miniatures.entity.Reference;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class ReferenceMapper {
         if(reference == null) return null;
         ReferenceDTO referenceDTO = new ReferenceDTO();
         referenceDTO.setId(reference.getId());
-        referenceDTO.setName(reference.getNom());
+        referenceDTO.setName(reference.getName());
 
         return referenceDTO;
     }
@@ -22,7 +21,7 @@ public class ReferenceMapper {
 
         Reference reference = new Reference();
         reference.setId(referenceDTO.getId());
-        reference.setNom(referenceDTO.getName());
+        reference.setName(referenceDTO.getName());
         return reference;
     }
 

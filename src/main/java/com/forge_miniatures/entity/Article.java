@@ -33,7 +33,7 @@ public class Article {
     private List<ArticleImage> images;
 
     @Column(name = "prix_article")
-    private double prix;
+    private double price;
 
     @Column(name = "quantite_article")
     private int quantite;

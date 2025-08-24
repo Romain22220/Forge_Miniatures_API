@@ -15,7 +15,7 @@ public class SubTypeMapper {
         return new SubTypeDTO(
                 subtype.getId(),
                 subtype.getNom(),
-                subtype.getType() != null ? subtype.getType().getNom() : null,
+                subtype.getType() != null ? subtype.getType().getName() : null,
                 subtype.getType() != null ? subtype.getType().getId() : null
         );
     }
