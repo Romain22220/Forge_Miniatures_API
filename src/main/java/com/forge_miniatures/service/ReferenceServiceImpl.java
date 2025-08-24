@@ -31,8 +31,8 @@ public class ReferenceServiceImpl implements ReferenceService {
     }
 
     @Override
-    public ReferenceDTO deleteReference(ReferenceDTO referenceDTO) {
-        return null;
+    public boolean deleteReference(ReferenceDTO referenceDTO) {
+        return true;
     }
 
     @Override
