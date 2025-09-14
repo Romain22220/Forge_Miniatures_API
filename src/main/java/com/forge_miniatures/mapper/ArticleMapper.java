@@ -20,6 +20,7 @@ public class ArticleMapper {
         articleDTO.setId(article.getId());
         articleDTO.setName(article.getNom());
         articleDTO.setMarque(article.getMarque());
+        articleDTO.setPrice(article.getPrice());
         articleDTO.setDescription(article.getDescription());
         articleDTO.setQuantite(article.getQuantite());
         articleDTO.setDateCreation(article.getDateCreation());

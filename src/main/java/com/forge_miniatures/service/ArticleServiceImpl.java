@@ -85,6 +85,9 @@ public class ArticleServiceImpl implements ArticleService{
         article.setReference(reference);
         article.setDateCreation(new Date());
 
+        if(articleDTO.getDatePublication().before(article.getDateCreation()))
+            throw new IllegalArgumentException("La date de publication ne peut pas être inférieure à la date de création.");
+
         return ArticleMapper.toArticleDTO(articleRepository.save(article));
     }
 
