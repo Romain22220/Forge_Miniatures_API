@@ -7,6 +7,7 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     User findUserByPseudo(String pseudo);
     User findUserByEmail(String pseudo);
     User findUserById(Long id);
+    boolean existsByPseudo(String pseudo);
 
 
 
