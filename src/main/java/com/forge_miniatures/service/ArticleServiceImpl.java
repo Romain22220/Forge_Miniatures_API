@@ -73,7 +73,7 @@ public class ArticleServiceImpl implements ArticleService{
         /*
             On regarde si la référence est déjà créé ou non
             - Si oui, on la met directement
-            - Si non, on la créer.
+            - Si non, on la crée.
          */
         Reference reference = referenceRepository.findReferenceByName(articleDTO.getReferenceName())
                 .orElseGet(()-> {
