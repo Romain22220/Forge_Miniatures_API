@@ -5,6 +5,7 @@ import com.forge_miniatures.entity.*;
 import com.forge_miniatures.mapper.ArticleMapper;
 import com.forge_miniatures.repository.*;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -116,7 +117,10 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
+    @Transactional
     public void deleteArticleById(Long id) {
+        Article article = articleRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Article not found with id " + id));
         articleRepository.deleteArticleById(id);
     }
 

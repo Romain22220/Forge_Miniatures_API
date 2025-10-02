@@ -49,5 +49,4 @@ public class UserControllerTest {
         assertNotEquals("1234", savedUser.getPassword());
 
     }
-
 }

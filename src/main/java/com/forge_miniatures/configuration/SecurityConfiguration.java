@@ -22,7 +22,8 @@ public class SecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable) // désactive CSRF (utile pour les tests POST en local)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/create").permitAll() // rend cette route publique
+                        .requestMatchers("/api/users/create").permitAll()
+                        .requestMatchers("/api/articles/**").permitAll()
                         .anyRequest().authenticated() // les autres nécessitent auth
                 )
                 .httpBasic(Customizer.withDefaults()) // active l'auth basic (optionnel)
