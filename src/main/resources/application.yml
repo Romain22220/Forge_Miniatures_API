@@ -21,3 +21,7 @@ spring:
       web:
         exposure:
           include: health,info,prometheus
+
+jwt:
+  secret: ${SECRET_TEST}
+  expiration: ${JWT_EXPIRATION:3600000}
