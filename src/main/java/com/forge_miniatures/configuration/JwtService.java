@@ -16,7 +16,7 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String SECRET_TEST;
 
-    @Value("${jvt.expiration")
+    @Value("${jwt.expiration")
     private String EXPIRATION;
 
     private Key getSigningKey() {
