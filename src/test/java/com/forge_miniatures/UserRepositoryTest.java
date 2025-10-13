@@ -64,7 +64,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByEmail(){
         userRepository.save(Jean);
-        User result = userRepository.findUserByEmail("jean@mail.com");
+        Optional<User> result = userRepository.findUserByEmail("jean@mail.com");
         Assertions.assertNotNull(result);
     }
 
@@ -73,7 +73,7 @@ public class UserRepositoryTest {
      */
     @Test
     public void testFindUserByEmailNotExistant(){
-        User result = userRepository.findUserByEmail("coco@coco.fr");
+        Optional<User> result = userRepository.findUserByEmail("coco@coco.fr");
         Assertions.assertNull(result);
     }
 
