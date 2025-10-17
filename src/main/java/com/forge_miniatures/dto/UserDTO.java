@@ -30,4 +30,6 @@ public class UserDTO {
 
     @NotBlank(message = "Missing your Password")
     private String password;
+
+    private boolean isAdmin;
 }
