@@ -25,7 +25,7 @@ public class UserRepositoryTest {
 
     @BeforeEach
     public void setup() {
-        Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123");
+        Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123",false);
     }
     /*
         Test permettant de voir si un User est bien sauvegardé
