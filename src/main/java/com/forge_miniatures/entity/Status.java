@@ -16,6 +16,6 @@ public class Status {
     @Column(name="idt_status_article")
     private Long id;
 
-    @Column(name="statut")
+    @Column(name="status")
     private String statut;
 }
