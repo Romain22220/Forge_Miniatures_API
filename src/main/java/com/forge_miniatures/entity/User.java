@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -42,6 +43,9 @@ public class User implements UserDetails {
 
     @Column(name = "password_user")
     private String password;
+
+    @Column(name = "birthday_user")
+    private Date birthday;
 
     @Column(name = "is_admin")
     private Boolean isAdmin;
