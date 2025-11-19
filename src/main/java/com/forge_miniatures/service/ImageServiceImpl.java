@@ -1,5 +1,6 @@
 package com.forge_miniatures.service;
 
+import com.forge_miniatures.dto.ArticleImageDTO;
 import com.forge_miniatures.entity.Article;
 import com.forge_miniatures.entity.ArticleImage;
 import com.forge_miniatures.repository.ArticleImageRepository;
@@ -28,25 +29,30 @@ public class ImageServiceImpl implements  ImageService{
     }
 
     @Override
-    public ArticleImage uploadImage(Long articleId, MultipartFile file) throws IOException {
+    public ArticleImageDTO uploadImage(Long articleId, MultipartFile file) throws IOException {
 
-        Article article = articleRepository.findArticleById(articleId);
-        if(article==null){
-            throw new EntityNotFoundException("Article with "+ articleId + " not found. Please select a real article. ");
-        }
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new EntityNotFoundException("Article " + articleId + " not found"));
 
         String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
 
         String uploadDir = "uploads/miniatures";
         Path savePath = Paths.get(uploadDir, filename);
 
+        Files.createDirectories(savePath.getParent());
         Files.copy(file.getInputStream(), savePath, StandardCopyOption.REPLACE_EXISTING);
 
-        // Enregistrement en BDD
         ArticleImage image = new ArticleImage();
         image.setImageUrl("/uploads/" + filename);
         image.setArticle(article);
 
-        return articleImageRepository.save(image);
+        ArticleImage saved = articleImageRepository.save(image);
+
+        return new ArticleImageDTO(
+                saved.getId(),
+                saved.getImageUrl(),
+                article.getId(),
+                article.getNom()
+        );
     }
 }

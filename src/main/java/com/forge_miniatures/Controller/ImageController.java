@@ -1,6 +1,6 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.entity.ArticleImage;
+import com.forge_miniatures.dto.ArticleImageDTO;
 import com.forge_miniatures.service.ImageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +23,10 @@ public class ImageController {
             @RequestParam("file") MultipartFile file) {
 
         try {
-            ArticleImage saved = imageService.uploadImage(articleId, file);
+            ArticleImageDTO saved = imageService.uploadImage(articleId, file);
             return ResponseEntity.ok(saved);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Erreur lors de l'upload de l'image: " + e.getMessage());
+            return ResponseEntity.status(500).body("Erreur lors de l'upload : " + e.getMessage());
         }
     }
 }
