@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,6 +29,8 @@ public class UserDTO {
 
     @NotBlank(message = "Missing your Address")
     private String address;
+
+    private Date birthday;
 
     @NotBlank(message = "Missing your Password")
     private String password;

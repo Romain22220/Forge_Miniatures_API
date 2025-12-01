@@ -13,6 +13,7 @@ public class UserMapper {
                 user.getEmail(),
                 user.getPhoneNumber(),
                 user.getAdresse(),
+                user.getBirthday(),
                 user.getPassword(),
                 user.getIsAdmin()
         );
@@ -28,6 +29,7 @@ public class UserMapper {
         user.setPseudo(userDTO.getPseudo());
         user.setEmail(userDTO.getEmail());
         user.setPhoneNumber(userDTO.getPhoneNumber());
+        user.setBirthday(userDTO.getBirthday());
         user.setAdresse(userDTO.getAddress());
         user.setPassword(userDTO.getPassword());
 
