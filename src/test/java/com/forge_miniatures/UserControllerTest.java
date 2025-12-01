@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
@@ -40,6 +42,9 @@ public class UserControllerTest {
         newUser.setPhoneNumber("0600000000");
         newUser.setPassword("1234");
         newUser.setAddress("toto");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = dateFormat.parse("02/11/1999");
+        newUser.setBirthday(date);
 
         mockMvc.perform(post("/api/users/create")
                 .contentType(MediaType.APPLICATION_JSON)

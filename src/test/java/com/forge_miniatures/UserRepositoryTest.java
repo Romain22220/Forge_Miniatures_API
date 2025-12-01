@@ -10,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 
@@ -24,8 +27,10 @@ public class UserRepositoryTest {
     private User Jean;
 
     @BeforeEach
-    public void setup() {
-        Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123",false);
+    public void setup() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = dateFormat.parse("02/11/1999");
+        Jean = new User(null, "Dupont", "Jean", "jean123", "jean@mail.com", "0612345678", "12 rue de Paris", "pass123", date, false);
     }
     /*
         Test permettant de voir si un User est bien sauvegardé
