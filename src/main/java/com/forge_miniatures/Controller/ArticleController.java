@@ -1,6 +1,8 @@
 package com.forge_miniatures.Controller;
 
 import com.forge_miniatures.dto.ArticleDTO;
+import com.forge_miniatures.dto.ArticlePriceDTO;
+import com.forge_miniatures.service.ArticlePriceService;
 import com.forge_miniatures.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ArticleController {
     private final ArticleService articleService;
+    private final ArticlePriceService articlePriceService;
 
     @PostMapping("/create")
     public ResponseEntity<ArticleDTO> createArticle(@RequestBody ArticleDTO articleDTO) {
@@ -34,5 +37,10 @@ public class ArticleController {
     public ResponseEntity<Void> deleteArticle(@PathVariable Long id) {
         articleService.deleteArticleById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/prices")
+    public List<ArticlePriceDTO> getArticlesPrices(@RequestParam List<Long> ids) {
+        return articlePriceService.getArticlesPrices(ids);
     }
 }
