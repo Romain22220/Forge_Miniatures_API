@@ -1,6 +1,7 @@
 package com.forge_miniatures.service;
 
 import com.forge_miniatures.dto.ArticleDTO;
+import com.forge_miniatures.dto.ArticlePriceDTO;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface ArticleService {
     ArticleDTO getArticleById(Long id);
     List<ArticleDTO> getAllArticles();
     void deleteArticleById(Long id);
+    List<ArticlePriceDTO> getArticlesPrices(List<Long> articleIds);
 }

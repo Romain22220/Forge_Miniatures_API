@@ -1,6 +1,7 @@
 package com.forge_miniatures.service;
 
 import com.forge_miniatures.dto.ArticleDTO;
+import com.forge_miniatures.dto.ArticlePriceDTO;
 import com.forge_miniatures.entity.*;
 import com.forge_miniatures.mapper.ArticleMapper;
 import com.forge_miniatures.repository.*;
@@ -122,6 +123,15 @@ public class ArticleServiceImpl implements ArticleService{
         Article article = articleRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Article not found with id " + id));
         articleRepository.deleteArticleById(id);
+    }
+
+    @Override
+    public List<ArticlePriceDTO> getArticlesPrices(List<Long> articleIds) {
+        List<Article> articles = articleRepository.findAllById(articleIds);
+
+        return articles.stream()
+                .map(article -> new ArticlePriceDTO(article.getId(), article.getPrice()))
+                .toList();
     }
 
     @Override
