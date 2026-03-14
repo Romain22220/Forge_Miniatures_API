@@ -33,7 +33,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/api/auth/login",
-                                "/api/users/**"   // ✅ autorise tous les endpoints sous /api/users/
+                                "/api/users/**", // ✅ autorise tous les endpoints sous /api/users/
+                                "/api/articles/prices"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
