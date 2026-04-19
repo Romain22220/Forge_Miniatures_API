@@ -5,6 +5,8 @@ import com.forge_miniatures.dto.LoginRequestDTO;
 import com.forge_miniatures.dto.LoginResponseDTO;
 import com.forge_miniatures.entity.User;
 import com.forge_miniatures.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/auth")
 public class AuthentificationController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthentificationController.class);
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
@@ -32,12 +35,13 @@ public class AuthentificationController {
 
         // On vérifie le mot de passe
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            LOGGER.warn("Erreur login ou mot de passe incorrect");
             return ResponseEntity.status(401).body("Mot de passe invalide");
         }
 
         // On génère le token JWT
         String token = jwtService.generateToken(user.getEmail());
-
+        LOGGER.info("Utilisateur : {} s'est bien connecté", user.getEmail());
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 }
