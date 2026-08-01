@@ -48,7 +48,7 @@ public class UserRepositoryTest {
     public void testFindUserById(){
         User savedUser = userRepository.save(Jean);
         Long id = savedUser.getId();
-        User result = userRepository.findUserById(id);
+        Optional<User> result = userRepository.findUserById(id);
         Assertions.assertNotNull(result);
     }
 
@@ -58,7 +58,7 @@ public class UserRepositoryTest {
     @Test
     public void testFindUserByIdNotExistant(){
         Long id = 5L;
-        User result = userRepository.findUserById(id);
+        Optional<User> result = userRepository.findUserById(id);
         Assertions.assertNull(result);
 
     }

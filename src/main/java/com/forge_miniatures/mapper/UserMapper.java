@@ -1,5 +1,6 @@
 package com.forge_miniatures.mapper;
 
+import com.forge_miniatures.dto.UpdateUserDTO;
 import com.forge_miniatures.dto.UserDTO;
 import com.forge_miniatures.entity.User;
 
@@ -34,5 +35,17 @@ public class UserMapper {
         user.setPassword(userDTO.getPassword());
 
         return user;
+    }
+
+    public static UpdateUserDTO updateUserDTO(User user) {
+        return new UpdateUserDTO(
+                user.getPrenom(),
+                user.getNom(),
+                user.getPseudo(),
+                user.getEmail(),
+                user.getAdresse(),
+                user.getPhoneNumber(),
+                user.getBirthday()
+        );
     }
 }
