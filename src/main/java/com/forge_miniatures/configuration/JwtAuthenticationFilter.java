@@ -1,6 +1,6 @@
 package com.forge_miniatures.configuration;
 
-import com.forge_miniatures.service.CustomUserDetailsService;
+import com.forge_miniatures.service.user.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,7 +1,7 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.article;
 
-import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.dto.ArticlePriceDTO;
+import com.forge_miniatures.dto.article.ArticleDTO;
+import com.forge_miniatures.dto.article.ArticlePriceDTO;
 
 import java.util.List;
 

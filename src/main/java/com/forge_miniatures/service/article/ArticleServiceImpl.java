@@ -1,13 +1,15 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.article;
 
-import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.dto.ArticlePriceDTO;
+import com.forge_miniatures.dto.article.ArticleDTO;
+import com.forge_miniatures.dto.article.ArticlePriceDTO;
 import com.forge_miniatures.entity.*;
 import com.forge_miniatures.mapper.ArticleMapper;
 import com.forge_miniatures.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ArticleServiceImpl implements ArticleService{
+public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
     private final ScaleRepository scaleRepository;
@@ -24,9 +26,12 @@ public class ArticleServiceImpl implements ArticleService{
     private final StatusRepository statusRepository;
     private final TypeRepository typeRepository;
 
+    private final static Logger LOGGER = LogManager.getLogger(ArticleServiceImpl.class);
+
 
     @Override
     public ArticleDTO createArticle(ArticleDTO articleDTO) {
+        LOGGER.info("Creating article...");
         Article article = ArticleMapper.toArticleEntity(articleDTO);
 
         /*
@@ -36,10 +41,12 @@ public class ArticleServiceImpl implements ArticleService{
          */
         Type type = typeRepository.findTypeByName(articleDTO.getTypeName())
                 .orElseGet(() ->{
-                Type newType = new Type();
-                newType.setName(articleDTO.getTypeName());
-                newType.setSubtypes(null);
-                return typeRepository.save(newType);
+                    LOGGER.info("Creating new type: {}", articleDTO.getTypeName());
+                    Type newType = new Type();
+                    newType.setName(articleDTO.getTypeName());
+                    newType.setSubtypes(null);
+                    LOGGER.info("Saving new type: {}", newType.getName());
+                    return typeRepository.save(newType);
                 });
 
         article.setType(type);
@@ -51,8 +58,10 @@ public class ArticleServiceImpl implements ArticleService{
          */
         Status status = statusRepository.findStatusByStatut(articleDTO.getStatutName())
                 .orElseGet(() ->{
+                    LOGGER.info("Creating new status: {}", articleDTO.getStatutName());
                     Status newStatus = new Status();
                     newStatus.setStatut(articleDTO.getStatutName());
+                    LOGGER.info("Saving new status: {}", newStatus.getStatut());
                     return statusRepository.save(newStatus);
         });
 
@@ -65,8 +74,10 @@ public class ArticleServiceImpl implements ArticleService{
          */
         Scale scale = scaleRepository.findScaleByScale(articleDTO.getScaleName())
                 .orElseGet(()->{
+                    LOGGER.info("Creating new scale: {}", articleDTO.getScaleName());
                     Scale newScale = new Scale();
                     newScale.setScale(articleDTO.getScaleName());
+                    LOGGER.info("Saving new scale: {}", newScale.getScale());
                     return scaleRepository.save(newScale);
                 });
 
@@ -79,8 +90,10 @@ public class ArticleServiceImpl implements ArticleService{
          */
         Reference reference = referenceRepository.findReferenceByName(articleDTO.getReferenceName())
                 .orElseGet(()-> {
+                    LOGGER.info("Creating new reference: {}", articleDTO.getReferenceName());
                     Reference newReference = new Reference();
                     newReference.setName(articleDTO.getReferenceName());
+                    LOGGER.info("Saving new reference: {}", newReference.getName());
                     return referenceRepository.save(newReference);
                 });
 
@@ -89,7 +102,7 @@ public class ArticleServiceImpl implements ArticleService{
 
         if(articleDTO.getDatePublication().before(article.getDateCreation()))
             throw new IllegalArgumentException("La date de publication ne peut pas être inférieure à la date de création.");
-
+        LOGGER.info("Saving article: {}", article.getNom());
         return ArticleMapper.toArticleDTO(articleRepository.save(article));
     }
 

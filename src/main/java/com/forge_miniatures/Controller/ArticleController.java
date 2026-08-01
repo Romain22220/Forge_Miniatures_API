@@ -1,8 +1,8 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.ArticleDTO;
-import com.forge_miniatures.dto.ArticlePriceDTO;
-import com.forge_miniatures.service.ArticleService;
+import com.forge_miniatures.dto.article.ArticleDTO;
+import com.forge_miniatures.dto.article.ArticlePriceDTO;
+import com.forge_miniatures.service.article.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

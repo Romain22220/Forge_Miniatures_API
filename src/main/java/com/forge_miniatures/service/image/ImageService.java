@@ -1,6 +1,6 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.image;
 
-import com.forge_miniatures.dto.ArticleImageDTO;
+import com.forge_miniatures.dto.article.ArticleImageDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

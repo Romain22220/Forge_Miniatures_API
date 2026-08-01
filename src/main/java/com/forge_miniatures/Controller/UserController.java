@@ -1,9 +1,9 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.UpdatePasswordDTO;
-import com.forge_miniatures.dto.UpdateUserDTO;
-import com.forge_miniatures.dto.UserDTO;
-import com.forge_miniatures.service.UserService;
+import com.forge_miniatures.dto.user.UpdatePasswordDTO;
+import com.forge_miniatures.dto.user.UpdateUserDTO;
+import com.forge_miniatures.dto.user.UserDTO;
+import com.forge_miniatures.service.user.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.scale;
 
 import com.forge_miniatures.dto.ScaleDTO;
 import com.forge_miniatures.entity.Scale;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ScaleServiceImpl implements   ScaleService {
+public class ScaleServiceImpl implements ScaleService {
     private final ScaleRepository scaleRepository;
 
     private final static Logger LOGGER = LogManager.getLogger(ScaleServiceImpl.class);

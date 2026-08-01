@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.ArticleDTO;
+import com.forge_miniatures.dto.article.ArticleDTO;
 import com.forge_miniatures.entity.*;
 
 import java.util.List;

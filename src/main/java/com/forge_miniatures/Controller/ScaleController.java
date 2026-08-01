@@ -1,7 +1,7 @@
 package com.forge_miniatures.Controller;
 
 import com.forge_miniatures.dto.ScaleDTO;
-import com.forge_miniatures.service.ScaleService;
+import com.forge_miniatures.service.scale.ScaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

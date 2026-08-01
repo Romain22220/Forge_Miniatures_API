@@ -1,4 +1,4 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.user;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

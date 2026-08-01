@@ -1,4 +1,4 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

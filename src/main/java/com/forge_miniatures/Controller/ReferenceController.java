@@ -1,7 +1,7 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.ReferenceDTO;
-import com.forge_miniatures.service.ReferenceService;
+import com.forge_miniatures.dto.reference.ReferenceDTO;
+import com.forge_miniatures.service.reference.ReferenceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

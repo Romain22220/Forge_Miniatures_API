@@ -1,6 +1,6 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.reference;
 
-import com.forge_miniatures.dto.ReferenceDTO;
+import com.forge_miniatures.dto.reference.ReferenceDTO;
 
 import java.util.List;
 

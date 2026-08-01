@@ -1,8 +1,8 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.CollectionDTO;
-import com.forge_miniatures.dto.CollectionItemDTO;
-import com.forge_miniatures.dto.CollectionResponseDTO;
+import com.forge_miniatures.dto.collection.CollectionDTO;
+import com.forge_miniatures.dto.collection.CollectionItemDTO;
+import com.forge_miniatures.dto.collection.CollectionResponseDTO;
 
 import java.util.List;
 import java.util.Map;

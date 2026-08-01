@@ -1,4 +1,4 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.user;
 
 import com.forge_miniatures.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;

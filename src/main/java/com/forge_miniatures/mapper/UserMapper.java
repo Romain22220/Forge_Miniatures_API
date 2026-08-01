@@ -1,7 +1,7 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.UpdateUserDTO;
-import com.forge_miniatures.dto.UserDTO;
+import com.forge_miniatures.dto.user.UpdateUserDTO;
+import com.forge_miniatures.dto.user.UserDTO;
 import com.forge_miniatures.entity.User;
 
 public class UserMapper {

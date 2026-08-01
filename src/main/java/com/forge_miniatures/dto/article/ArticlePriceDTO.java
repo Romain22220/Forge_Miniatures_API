@@ -1,4 +1,4 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.article;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReferenceDTO {
+public class ArticlePriceDTO {
     private Long id;
-    private String name;
+    private Double price;
 }

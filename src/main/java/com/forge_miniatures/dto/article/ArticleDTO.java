@@ -1,6 +1,5 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.article;
 
-import com.forge_miniatures.entity.ArticleImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

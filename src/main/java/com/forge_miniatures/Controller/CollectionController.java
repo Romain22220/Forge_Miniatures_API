@@ -1,7 +1,7 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.CollectionDTO;
-import com.forge_miniatures.service.CollectionService;
+import com.forge_miniatures.dto.collection.CollectionDTO;
+import com.forge_miniatures.service.client.CollectionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

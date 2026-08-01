@@ -1,6 +1,6 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.image;
 
-import com.forge_miniatures.dto.ArticleImageDTO;
+import com.forge_miniatures.dto.article.ArticleImageDTO;
 import com.forge_miniatures.entity.Article;
 import com.forge_miniatures.entity.ArticleImage;
 import com.forge_miniatures.repository.ArticleImageRepository;
@@ -17,7 +17,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 @Service
-public class ImageServiceImpl implements  ImageService{
+public class ImageServiceImpl implements ImageService {
 
 
     private final ArticleRepository articleRepository;

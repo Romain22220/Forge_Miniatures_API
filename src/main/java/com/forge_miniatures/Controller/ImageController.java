@@ -1,7 +1,7 @@
 package com.forge_miniatures.Controller;
 
-import com.forge_miniatures.dto.ArticleImageDTO;
-import com.forge_miniatures.service.ImageService;
+import com.forge_miniatures.dto.article.ArticleImageDTO;
+import com.forge_miniatures.service.image.ImageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

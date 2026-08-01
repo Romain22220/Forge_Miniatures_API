@@ -1,7 +1,7 @@
 package com.forge_miniatures;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.forge_miniatures.dto.UserDTO;
+import com.forge_miniatures.dto.user.UserDTO;
 import com.forge_miniatures.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

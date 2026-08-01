@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.ReferenceDTO;
+import com.forge_miniatures.dto.reference.ReferenceDTO;
 import com.forge_miniatures.entity.Reference;
 
 import java.util.List;

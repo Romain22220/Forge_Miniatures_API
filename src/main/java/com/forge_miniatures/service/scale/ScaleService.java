@@ -1,7 +1,6 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.scale;
 
 import com.forge_miniatures.dto.ScaleDTO;
-import com.forge_miniatures.entity.Scale;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.user;
 
-import com.forge_miniatures.dto.UpdatePasswordDTO;
-import com.forge_miniatures.dto.UpdateUserDTO;
-import com.forge_miniatures.dto.UserDTO;
+import com.forge_miniatures.dto.user.UpdatePasswordDTO;
+import com.forge_miniatures.dto.user.UpdateUserDTO;
+import com.forge_miniatures.dto.user.UserDTO;
 
 public interface UserService {
 

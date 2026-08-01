@@ -1,8 +1,8 @@
 package com.forge_miniatures.Controller;
 
 import com.forge_miniatures.configuration.JwtService;
-import com.forge_miniatures.dto.LoginRequestDTO;
-import com.forge_miniatures.dto.LoginResponseDTO;
+import com.forge_miniatures.dto.user.LoginRequestDTO;
+import com.forge_miniatures.dto.user.LoginResponseDTO;
 import com.forge_miniatures.entity.User;
 import com.forge_miniatures.repository.UserRepository;
 import org.slf4j.Logger;

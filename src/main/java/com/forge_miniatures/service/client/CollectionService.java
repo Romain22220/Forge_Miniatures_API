@@ -1,12 +1,11 @@
-package com.forge_miniatures.service;
+package com.forge_miniatures.service.client;
 
-import com.forge_miniatures.dto.CollectionDTO;
-import com.forge_miniatures.dto.CollectionItemResponseDTO;
-import com.forge_miniatures.dto.CollectionResponseDTO;
+import com.forge_miniatures.dto.collection.CollectionDTO;
+import com.forge_miniatures.dto.collection.CollectionItemResponseDTO;
+import com.forge_miniatures.dto.collection.CollectionResponseDTO;
 import com.forge_miniatures.entity.Article;
 import com.forge_miniatures.mapper.CollectionMapper;
 import com.forge_miniatures.repository.ArticleRepository;
-import com.forge_miniatures.service.client.CollectionAPIClient;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.forge_miniatures.service.client;
 
-import com.forge_miniatures.dto.CollectionResponseDTO;
+import com.forge_miniatures.dto.collection.CollectionResponseDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
