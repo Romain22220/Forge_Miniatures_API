@@ -6,6 +6,8 @@ import com.forge_miniatures.mapper.ScaleMapper;
 import com.forge_miniatures.repository.ScaleRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ScaleServiceImpl implements   ScaleService {
     private final ScaleRepository scaleRepository;
+
+    private final static Logger LOGGER = LogManager.getLogger(ScaleServiceImpl.class);
 
     @Override
     public ScaleDTO createScale(ScaleDTO scaleDTO) {
@@ -35,11 +39,13 @@ public class ScaleServiceImpl implements   ScaleService {
         if(scale == null){
             throw new EntityNotFoundException("Scale with "+ id + " not found. Please select a real scale. ");
         }
+        LOGGER.info("Retrieving scale with ID: {}", id);
         return ScaleMapper.toScaleDTO(scale);
     }
 
     @Override
     public List<ScaleDTO> getAllScales() {
+        LOGGER.info("Retrieving all scales");
         return scaleRepository.findAll().stream().map(ScaleMapper::toScaleDTO).collect(Collectors.toList());
     }
 
@@ -48,7 +54,8 @@ public class ScaleServiceImpl implements   ScaleService {
         if (!scaleRepository.existsById(id)) {
             throw new EntityNotFoundException("Scale with id " + id + " not found. Please select a real ID to delete a scale. ");
         }
+        LOGGER.info("Deleting scale with ID: {}", id);
         scaleRepository.deleteScaleById(id);
-
+        LOGGER.info("Scale with ID: {} has been deleted", id);
     }
 }
