@@ -35,13 +35,13 @@ public class AuthentificationController {
 
         // On vérifie le mot de passe
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            LOGGER.warn("Erreur login ou mot de passe incorrect");
-            return ResponseEntity.status(401).body("Mot de passe invalide");
+            LOGGER.warn("ERROR with the login or the password is incorrect");
+            return ResponseEntity.status(401).body("Incorrect password or login");
         }
 
         // On génère le token JWT
         String token = jwtService.generateToken(user.getEmail());
-        LOGGER.info("Utilisateur : {} s'est bien connecté", user.getEmail());
+        LOGGER.info("User : {} is sucessfully connected !", user.getEmail());
         return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 }
