@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -57,33 +57,39 @@ public class UserServiceImpl implements UserService {
     public UpdateUserDTO updateUser(String email, UpdateUserDTO userDTO) {
         //Check if user is already in the database
         User user = userRepository.findUserByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+        String modifiedField = ""; 
 
         if (userDTO.getPseudo() != null) {
+            modifiedField = "Pseudo";
             String oldPseudo = user.getPseudo();
             user.setPseudo(userDTO.getPseudo());
             LOGGER.info("Pseudo updated from {} to {}", oldPseudo, userDTO.getPseudo());
         }
         if (userDTO.getEmail() != null) {
+            modifiedField = "Email";
             String oldEmail = user.getEmail();
             user.setEmail(userDTO.getEmail());
             LOGGER.info("Email updated from {} to {}", oldEmail, user.getEmail());
         }
         if (userDTO.getAddress() != null) {
+            modifiedField = "Address";
             String oldAddress = user.getAdresse();
             user.setAdresse(userDTO.getAddress());
             LOGGER.info("Address updated from {} to {}", oldAddress, userDTO.getAddress());
         }
         if(userDTO.getPhoneNumber() != null) {
+            modifiedField = "Phone Number";
             String oldPhoneNumber = user.getPhoneNumber();
             user.setPhoneNumber(userDTO.getPhoneNumber());
             LOGGER.info("Phone number updated from {} to {}", oldPhoneNumber, user.getPhoneNumber());
         }
         if(userDTO.getBirthday() != null) {
-            Date oldBirthday = user.getBirthday();
+            modifiedField = "Birthday";
+            LocalDate oldBirthday = user.getBirthday();
             user.setBirthday(userDTO.getBirthday());
             LOGGER.info("Birthday updated from {} to {}", oldBirthday, user.getBirthday());
         }
-        LOGGER.info("Your profile as bean updated");
+        LOGGER.info("Your profile as bean updated : Field ({})", modifiedField);
         return UserMapper.updateUserDTO(userRepository.save(user));
     }
 
