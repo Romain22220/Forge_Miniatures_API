@@ -4,6 +4,7 @@ import com.forge_miniatures.configuration.JwtService;
 import com.forge_miniatures.dto.user.LoginRequestDTO;
 import com.forge_miniatures.dto.user.LoginResponseDTO;
 import com.forge_miniatures.entity.User;
+import com.forge_miniatures.exception.InvalidCredentialsException;
 import com.forge_miniatures.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,12 +32,12 @@ public class AuthentificationController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDTO request) {
-        User user = userRepository.findUserByEmail(request.getEmail()).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+        User user = userRepository.findUserByEmail(request.getEmail()).orElseThrow(() -> new InvalidCredentialsException("User not found"));
 
         // On vérifie le mot de passe
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             LOGGER.warn("ERROR with the login or the password is incorrect");
-            return ResponseEntity.status(401).body("Incorrect password or login");
+            throw new InvalidCredentialsException("Email ou mot de passe incorrect");
         }
 
         // On génère le token JWT
