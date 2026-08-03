@@ -1,6 +1,6 @@
 package com.forge_miniatures.service.scale;
 
-import com.forge_miniatures.dto.ScaleDTO;
+import com.forge_miniatures.dto.scale.ScaleDTO;
 import com.forge_miniatures.entity.Scale;
 import com.forge_miniatures.mapper.ScaleMapper;
 import com.forge_miniatures.repository.ScaleRepository;

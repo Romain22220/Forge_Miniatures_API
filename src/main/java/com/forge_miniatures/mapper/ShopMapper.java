@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.ShopDTO;
+import com.forge_miniatures.dto.shop.ShopDTO;
 import com.forge_miniatures.entity.Shop;
 
 public class ShopMapper {

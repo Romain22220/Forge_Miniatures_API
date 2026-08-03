@@ -1,13 +1,13 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.shop;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class StatusDTO {
+@NoArgsConstructor
+public class ShopDTO {
     private Long id;
-    private String status;
+    private String user;
 }

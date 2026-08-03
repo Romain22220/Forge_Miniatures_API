@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.PaiementDTO;
+import com.forge_miniatures.dto.paiement.PaiementDTO;
 import com.forge_miniatures.entity.Paiement;
 
 public class PaiementMapper {

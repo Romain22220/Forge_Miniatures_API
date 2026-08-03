@@ -1,7 +1,7 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.SubTypeDTO;
-import com.forge_miniatures.dto.TypeDTO;
+import com.forge_miniatures.dto.type.SubTypeDTO;
+import com.forge_miniatures.dto.type.TypeDTO;
 import com.forge_miniatures.entity.Type;
 
 

@@ -1,16 +1,13 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.scale;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TypeDTO {
+public class ScaleDTO {
     private Long id;
     private String name;
-    private List<String> subtypes;
 }

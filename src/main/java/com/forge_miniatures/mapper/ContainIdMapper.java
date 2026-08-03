@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.ContainIdDTO;
+import com.forge_miniatures.dto.contain.ContainIdDTO;
 import com.forge_miniatures.entity.ContainId;
 
 public class ContainIdMapper {

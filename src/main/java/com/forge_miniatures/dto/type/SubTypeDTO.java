@@ -1,4 +1,4 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.forge_miniatures.mapper;
 
-import com.forge_miniatures.dto.StatusDTO;
+import com.forge_miniatures.dto.status.StatusDTO;
 import com.forge_miniatures.entity.Status;
 
 public class StatusMapper {

@@ -1,13 +1,16 @@
-package com.forge_miniatures.dto;
+package com.forge_miniatures.dto.type;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShopDTO {
+public class TypeDTO {
     private Long id;
-    private String user;
+    private String name;
+    private List<String> subtypes;
 }
