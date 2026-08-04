@@ -43,7 +43,7 @@ public class ImageServiceImpl implements ImageService {
         Files.copy(file.getInputStream(), savePath, StandardCopyOption.REPLACE_EXISTING);
 
         ArticleImage image = new ArticleImage();
-        image.setImageUrl("/uploads/" + filename);
+        image.setImageUrl("/uploads/miniatures/" + filename);
         image.setArticle(article);
 
         ArticleImage saved = articleImageRepository.save(image);
