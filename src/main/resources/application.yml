@@ -31,6 +31,9 @@ jwt:
   secret: ${SECRET_TEST}
   expiration: ${JWT_EXPIRATION:3600000}
 
+upload:
+  directory: uploads
+
 collection:
   api:
     url: http://localhost:8082
