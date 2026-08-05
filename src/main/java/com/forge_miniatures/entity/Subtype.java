@@ -18,7 +18,7 @@ public class Subtype {
     private Long id;
 
     @Column(name="nom_subtype")
-    private String nom;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "idt_type")

@@ -26,6 +26,7 @@ public class ArticleServiceImpl implements ArticleService {
     private final ReferenceRepository referenceRepository;
     private final StatusRepository statusRepository;
     private final TypeRepository typeRepository;
+    private final SubtypeRepository subtypeRepository;
 
     private final static Logger LOGGER = LogManager.getLogger(ArticleServiceImpl.class);
 
@@ -149,11 +150,24 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<ArticleDTO> getAllArticlesByMarque(String marque) {
         List<Article> articles = articleRepository.findArticlesByMarque(marque);
-        if (articles == null) {
-            LOGGER.warn("Articles not found. Please choose a real marque. ");
-            throw new EntityNotFoundException("Articles by marque " + marque + " not found. Please choose a real marque. ");
+        if (articles.isEmpty()) {
+            LOGGER.warn("Articles not found. Please choose a real brand. ");
+            throw new EntityNotFoundException("Articles by brand " + marque + " not found. Please choose a real brand. ");
         }
+        LOGGER.info("Collect articles with brand {}", marque);
         return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ArticleDTO> getAllArticlesBySubtype(String subtype) {
+        Subtype subtypeToSearch = subtypeRepository.findSubtypeByName(subtype)
+                .orElseThrow(() ->
+                        new EntityNotFoundException("Subtype " + subtype + " not found"));
+
+        List<Article> articles = articleRepository.findByType_SubtypesContains(subtypeToSearch);
+
+        LOGGER.info("{} article(s) found for subtype {}", articles.size(), subtype);
+        return articles.stream().map(ArticleMapper::toArticleDTO).toList();
     }
 
     @Override

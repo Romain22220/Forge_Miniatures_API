@@ -52,4 +52,9 @@ public class ArticleController {
     public ResponseEntity<List<ArticleDTO>> getAllArticlesByMarque(@PathVariable String marque) {
         return ResponseEntity.ok(articleService.getAllArticlesByMarque(marque));
     }
+
+    @GetMapping("/subtype/{subtype}/all")
+    public ResponseEntity<List<ArticleDTO>> getAllArticlesBySubtype(@PathVariable String subtype) {
+        return ResponseEntity.ok(articleService.getAllArticlesBySubtype(subtype));
+    }
 }

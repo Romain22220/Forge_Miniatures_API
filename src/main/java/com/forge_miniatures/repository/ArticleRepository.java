@@ -1,6 +1,7 @@
 package com.forge_miniatures.repository;
 
 import com.forge_miniatures.entity.Article;
+import com.forge_miniatures.entity.Subtype;
 import com.forge_miniatures.entity.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -14,4 +15,7 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
     void deleteArticleById(Long id);
 
     List<Article> findArticlesByType(Optional<Type> type);
+
+    List<Article> findByType_SubtypesContains(Subtype subtype);
+
 }

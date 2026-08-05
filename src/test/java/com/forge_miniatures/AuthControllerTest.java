@@ -1,8 +1,10 @@
 package com.forge_miniatures;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.forge_miniatures.dto.LoginRequestDTO;
+import com.forge_miniatures.dto.user.LoginRequestDTO;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,7 @@ public class AuthControllerTest {
     @Test
     void testLogin() throws Exception {
 
+        final Logger LOGGER = LoggerFactory.getLogger(AuthControllerTest.class);
         LoginRequestDTO loginRequest = new LoginRequestDTO();
 
         loginRequest.setEmail("romain.tacon01@gmail.com");
@@ -38,13 +41,13 @@ public class AuthControllerTest {
         MvcResult result = mockMvc.perform(post("/api/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(loginRequest)))
-                .andDo(print()) // affiche dans la console la requête et la réponse (utile en debug)
-                .andExpect(MockMvcResultMatchers.status().isOk()) // ou isUnauthorized(), selon ton cas
-                .andReturn();
+                        .andDo(print())
+                        .andExpect(MockMvcResultMatchers.status().isOk()) // ou isUnauthorized()
+                        .andReturn();
 
         // Assert
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Réponse brute : " + responseBody);
+        LOGGER.info("Response Body: {}", responseBody);
 
         // Exemple de vérification sur le contenu
         assertThat(responseBody).isNotEmpty();
