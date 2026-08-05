@@ -42,9 +42,14 @@ public class ArticleController {
         return articleService.getArticlesPrices(ids);
     }
 
-    //Avoir tous les articles en fonction du type de l'article
-    @GetMapping("/{type}/all")
+    /* Section pour avoir tous les produits par marques/type/status etc... */
+    @GetMapping("/type/{type}/all")
     public ResponseEntity<List<ArticleDTO>> getAllArticlesByType(@PathVariable String type) {
         return ResponseEntity.ok(articleService.getAllArticlesByType(type));
+    }
+
+    @GetMapping("/marque/{marque}/all")
+    public ResponseEntity<List<ArticleDTO>> getAllArticlesByMarque(@PathVariable String marque) {
+        return ResponseEntity.ok(articleService.getAllArticlesByMarque(marque));
     }
 }

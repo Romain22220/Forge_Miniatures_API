@@ -123,15 +123,6 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleDTO> findArticlesByMarque(String marque) {
-        List<Article> articles = articleRepository.findArticlesByMarque(marque);
-    if (articles == null) {
-        throw new EntityNotFoundException("Articles by  " + marque+ " not found. Please choose a real marque. ");
-    }
-        return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
-    }
-
-    @Override
     @Transactional
     public void deleteArticleById(Long id) {
         Article article = articleRepository.findById(id)
@@ -152,6 +143,16 @@ public class ArticleServiceImpl implements ArticleService {
     public List<ArticleDTO> getAllArticlesByType(String type) {
         Optional<Type> typeToSearch = typeRepository.findTypeByName(type);
         List<Article> articles = articleRepository.findArticlesByType(typeToSearch);
+        return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ArticleDTO> getAllArticlesByMarque(String marque) {
+        List<Article> articles = articleRepository.findArticlesByMarque(marque);
+        if (articles == null) {
+            LOGGER.warn("Articles not found. Please choose a real marque. ");
+            throw new EntityNotFoundException("Articles by marque " + marque + " not found. Please choose a real marque. ");
+        }
         return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
     }
 
