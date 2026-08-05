@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class UpdateUserDTO {
 
-    private String nom;
-    private String prenom;
+    private String lastName;
+    private String name;
     private String pseudo;
     private String email;
     private String address;
