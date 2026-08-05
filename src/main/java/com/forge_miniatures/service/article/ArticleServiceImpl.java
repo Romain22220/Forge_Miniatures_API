@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -145,6 +146,13 @@ public class ArticleServiceImpl implements ArticleService {
         return articles.stream()
                 .map(article -> new ArticlePriceDTO(article.getId(), article.getPrice()))
                 .toList();
+    }
+
+    @Override
+    public List<ArticleDTO> getAllArticlesByType(String type) {
+        Optional<Type> typeToSearch = typeRepository.findTypeByName(type);
+        List<Article> articles = articleRepository.findArticlesByType(typeToSearch);
+        return articles.stream().map(ArticleMapper::toArticleDTO).collect(Collectors.toList());
     }
 
     @Override

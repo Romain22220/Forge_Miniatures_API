@@ -14,4 +14,6 @@ public interface ArticleService {
     List<ArticleDTO> getAllArticles();
     void deleteArticleById(Long id);
     List<ArticlePriceDTO> getArticlesPrices(List<Long> articleIds);
+
+    List<ArticleDTO> getAllArticlesByType(String type);
 }

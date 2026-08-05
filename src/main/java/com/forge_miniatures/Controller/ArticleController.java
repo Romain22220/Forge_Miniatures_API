@@ -41,4 +41,10 @@ public class ArticleController {
     public List<ArticlePriceDTO> getArticlesPrices(@RequestParam List<Long> ids) {
         return articleService.getArticlesPrices(ids);
     }
+
+    //Avoir tous les articles en fonction du type de l'article
+    @GetMapping("/{type}/all")
+    public ResponseEntity<List<ArticleDTO>> getAllArticlesByType(@PathVariable String type) {
+        return ResponseEntity.ok(articleService.getAllArticlesByType(type));
+    }
 }
