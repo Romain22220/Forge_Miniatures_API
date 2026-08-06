@@ -4,8 +4,12 @@ import com.forge_miniatures.dto.collection.CollectionDTO;
 import com.forge_miniatures.dto.collection.CollectionItemResponseDTO;
 import com.forge_miniatures.dto.collection.CollectionResponseDTO;
 import com.forge_miniatures.entity.Article;
+import com.forge_miniatures.entity.User;
 import com.forge_miniatures.mapper.CollectionMapper;
 import com.forge_miniatures.repository.ArticleRepository;
+import com.forge_miniatures.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +20,12 @@ import java.util.stream.Collectors;
 public class CollectionService {
     private final CollectionAPIClient collectionClient;
     private final ArticleRepository articleRepository;
+    private final UserRepository userRepository;
 
-    public CollectionService(CollectionAPIClient collectionClient, ArticleRepository articleRepository) {
+    public CollectionService(CollectionAPIClient collectionClient, ArticleRepository articleRepository, UserRepository userRepository) {
         this.collectionClient = collectionClient;
         this.articleRepository = articleRepository;
+        this.userRepository = userRepository;
     }
 
     public CollectionDTO getCollection(Long userId, Long collectionId) {
@@ -48,5 +54,32 @@ public class CollectionService {
 
         // mapper + calcul
         return CollectionMapper.toDTO(response, priceMap);
+    }
+
+    public List<CollectionDTO> getAllCollections(Authentication authentication) {
+        User user = userRepository.findUserByEmail(authentication.getName())
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        List<CollectionResponseDTO> responses =
+                collectionClient.getAllCollections(user.getId());
+
+        return responses.stream()
+                .map(response -> {
+
+                    List<Long> articleIds = response.getItems()
+                            .stream()
+                            .map(CollectionItemResponseDTO::getArticleId)
+                            .toList();
+
+                    Map<Long, Double> priceMap =
+                            articleRepository.findAllById(articleIds)
+                                    .stream()
+                                    .collect(Collectors.toMap(
+                                            Article::getId,
+                                            Article::getPrice));
+
+                    return CollectionMapper.toDTO(response, priceMap);
+                })
+                .toList();
     }
 }

@@ -37,3 +37,4 @@ upload:
 collection:
   api:
     url: http://localhost:8082
+    internal-secret: forge-service-token
