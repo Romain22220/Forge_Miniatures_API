@@ -3,6 +3,7 @@ package com.forge_miniatures.service.client;
 import com.forge_miniatures.dto.collection.CollectionDTO;
 import com.forge_miniatures.dto.collection.CollectionItemResponseDTO;
 import com.forge_miniatures.dto.collection.CollectionResponseDTO;
+import com.forge_miniatures.dto.collection.CreateCollectionDTO;
 import com.forge_miniatures.entity.Article;
 import com.forge_miniatures.entity.User;
 import com.forge_miniatures.mapper.CollectionMapper;
@@ -81,5 +82,17 @@ public class CollectionService {
                     return CollectionMapper.toDTO(response, priceMap);
                 })
                 .toList();
+    }
+
+    public CollectionDTO createCollection(Authentication authentication, CreateCollectionDTO collectionDTO) {
+
+        User user = userRepository.findUserByEmail(authentication.getName())
+                .orElseThrow(() ->
+                        new EntityNotFoundException("User not found"));
+
+        return collectionClient.createCollection(
+                user.getId(),
+                collectionDTO
+        );
     }
 }

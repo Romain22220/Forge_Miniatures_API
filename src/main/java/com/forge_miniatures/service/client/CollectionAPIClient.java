@@ -1,11 +1,10 @@
 package com.forge_miniatures.service.client;
 
+import com.forge_miniatures.dto.collection.CollectionDTO;
 import com.forge_miniatures.dto.collection.CollectionResponseDTO;
+import com.forge_miniatures.dto.collection.CreateCollectionDTO;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import java.util.Arrays;
@@ -50,4 +49,19 @@ public class CollectionAPIClient {
         return Arrays.asList(response.getBody());
     }
 
+    public CollectionDTO createCollection(Long userId, CreateCollectionDTO collectionDTO) {
+
+        String url = collectionAPIUrl + "/api/collections";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("X-User-Id", String.valueOf(userId));
+        headers.set("X-Internal-Secret", internalSecret);
+
+        HttpEntity<CreateCollectionDTO> request = new HttpEntity<>(collectionDTO, headers);
+
+        ResponseEntity<CollectionDTO> response = restTemplate.exchange(url, HttpMethod.POST, request, CollectionDTO.class);
+
+        return response.getBody();
+    }
 }
