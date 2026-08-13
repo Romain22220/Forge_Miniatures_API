@@ -10,6 +10,7 @@ import com.forge_miniatures.mapper.CollectionMapper;
 import com.forge_miniatures.repository.ArticleRepository;
 import com.forge_miniatures.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -94,5 +95,12 @@ public class CollectionService {
                 user.getId(),
                 collectionDTO
         );
+    }
+
+    public void deleteCollection(Authentication authentication, @Valid CollectionDTO collectionDTO) {
+        User user = userRepository.findUserByEmail(authentication.getName())
+                .orElseThrow(() ->
+                        new EntityNotFoundException("User not found"));
+        collectionClient.deleteCollection(user.getId(), collectionDTO.getId());
     }
 }

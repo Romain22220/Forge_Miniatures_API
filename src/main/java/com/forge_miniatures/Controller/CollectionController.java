@@ -37,4 +37,10 @@ public class CollectionController {
                 .status(HttpStatus.CREATED)
                 .body(collectionService.createCollection(authentication, collectionDTO));
     }
+
+    @DeleteMapping("/me/delete")
+    public ResponseEntity<Void> deleteCollection(Authentication authentication, @Valid @RequestBody CollectionDTO collectionDTO) {
+        collectionService.deleteCollection(authentication, collectionDTO);
+        return ResponseEntity.noContent().build();
+    }
 }

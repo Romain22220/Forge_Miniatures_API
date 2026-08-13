@@ -64,4 +64,16 @@ public class CollectionAPIClient {
 
         return response.getBody();
     }
+
+    public void deleteCollection(Long userId, Long collectionId) {
+        String url = this.collectionAPIUrl + "/api/collections/" + userId + "/" + collectionId + "/delete";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("X-Internal-Secret", internalSecret);
+        headers.set("X-User-Id", String.valueOf(userId));
+
+        HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
+
+        restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, Void.class);
+    }
 }
